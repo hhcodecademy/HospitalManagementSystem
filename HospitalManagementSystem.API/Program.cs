@@ -1,6 +1,14 @@
 
+using HospitalManagementSystem.BLL.Mapper;
+using HospitalManagementSystem.BLL.Services;
+using HospitalManagementSystem.BLL.Services.Interfaces;
 using HospitalManagementSystem.DAL.Data;
+using HospitalManagementSystem.DAL.Repository;
+using HospitalManagementSystem.DAL.Repository.Interfaces;
+using HospitalManagementSystem.DAL.UnitOfWork;
+using HospitalManagementSystem.DAL.UnitOfWork.Interface;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace HospitalManagementSystem.API
 {
@@ -21,7 +29,10 @@ namespace HospitalManagementSystem.API
             {
                 opts.UseSqlServer(builder.Configuration.GetConnectionString("SQLConnectionString"));
             });
-
+            builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+            builder.Services.AddScoped(typeof(IGenericService<,>),typeof(GenericService<,>));
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(CustomProfile)));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

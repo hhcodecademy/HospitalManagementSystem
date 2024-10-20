@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\HospitalManagementSystem.DAL\HospitalManagementSystem.DAL.csproj" />
+    <Folder Include="ResponseDto\" />
+    <Folder Include="RequestDto\" />
   </ItemGroup>
 
 </Project>

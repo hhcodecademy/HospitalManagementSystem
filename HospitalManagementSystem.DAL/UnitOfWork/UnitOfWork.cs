@@ -10,8 +10,8 @@ namespace HospitalManagementSystem.DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
-        public UnitOfWork(DbContext context)
+        private readonly AppDbContext _context;
+        public UnitOfWork(AppDbContext context)
         {
             _context = context;
         }
